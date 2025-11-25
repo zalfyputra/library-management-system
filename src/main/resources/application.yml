@@ -1,0 +1,72 @@
+spring:
+  application:
+    name: security-backend
+    
+  datasource:
+    url: jdbc:postgresql://localhost:5432/library_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 60000
+    
+  cache:
+    type: redis
+    redis:
+      time-to-live: 600000
+      
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:your-email@gmail.com}
+    password: ${MAIL_PASSWORD:your-app-password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+  expiration: 86400000 # 24 hours in milliseconds
+  
+# Security Configuration
+security:
+  max-login-attempts: 5
+  login-attempt-window-minutes: 10
+  account-lock-duration-minutes: 30
+  otp-expiration-minutes: 5
+  
+# Rate Limiting
+rate-limit:
+  enabled: true
+  requests-per-minute: 60
+  
+# Springdoc OpenAPI
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
