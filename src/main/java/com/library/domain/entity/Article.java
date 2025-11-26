@@ -55,4 +55,3 @@ public class Article {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 }
-

@@ -23,4 +23,3 @@ public enum AuditAction {
     RATE_LIMIT_EXCEEDED,
     UNAUTHORIZED_ACCESS
 }
-

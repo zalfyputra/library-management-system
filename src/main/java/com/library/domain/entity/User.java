@@ -88,7 +88,6 @@ public class User {
         }
         
         if (lockedUntil != null && LocalDateTime.now().isAfter(lockedUntil)) {
-            // Auto-unlock account
             accountLocked = false;
             lockedUntil = null;
             failedLoginAttempts = 0;
@@ -98,4 +97,3 @@ public class User {
         return false;
     }
 }
-

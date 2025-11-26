@@ -75,4 +75,3 @@ public class AuditLogController {
         return ResponseEntity.ok(ApiResponse.success(logs));
     }
 }
-

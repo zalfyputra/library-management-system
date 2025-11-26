@@ -158,4 +158,3 @@ class UserServiceTest {
         assertEquals("testuser", result.getUsername());
     }
 }
-

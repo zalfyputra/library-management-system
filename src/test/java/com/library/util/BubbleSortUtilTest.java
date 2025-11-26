@@ -100,10 +100,8 @@ class BubbleSortUtilTest {
         
         bubbleSortUtil.sortArticlesByCreatedDate(articles);
         
-        // Should be sorted newest first
         assertEquals("New", articles.get(0).getTitle());
         assertEquals("Middle", articles.get(1).getTitle());
         assertEquals("Old", articles.get(2).getTitle());
     }
 }
-

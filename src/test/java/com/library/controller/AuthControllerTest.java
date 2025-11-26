@@ -113,4 +113,3 @@ class AuthControllerTest {
                 .andExpect(jsonPath("$.data.token").value("jwt-token"));
     }
 }
-

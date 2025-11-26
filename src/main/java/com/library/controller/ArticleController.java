@@ -82,4 +82,3 @@ public class ArticleController {
         return ResponseEntity.ok(ApiResponse.success("Article deleted successfully", null));
     }
 }
-

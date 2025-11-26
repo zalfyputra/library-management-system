@@ -27,4 +27,3 @@ security:
   login-attempt-window-minutes: 10
   account-lock-duration-minutes: 30
   otp-expiration-minutes: 5
-

@@ -29,4 +29,3 @@ public interface OtpTokenRepository extends JpaRepository<OtpToken, Long> {
     @Query("DELETE FROM OtpToken o WHERE o.userId = :userId")
     void deleteByUserId(Long userId);
 }
-

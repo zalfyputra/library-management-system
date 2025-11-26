@@ -14,4 +14,3 @@ public class AccountLockedException extends RuntimeException {
         return lockedUntil;
     }
 }
-

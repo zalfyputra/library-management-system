@@ -45,4 +45,3 @@ public class OtpToken {
         return LocalDateTime.now().isAfter(expiresAt);
     }
 }
-

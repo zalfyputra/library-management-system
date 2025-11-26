@@ -7,18 +7,9 @@ import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * Utility class implementing Bubble Sort algorithm for sorting articles.
- * This demonstrates the classic bubble sort algorithm with various sorting options.
- */
 @Component
 public class BubbleSortUtil {
     
-    /**
-     * Generic bubble sort implementation
-     * Time Complexity: O(n²)
-     * Space Complexity: O(1)
-     */
     public <T extends Comparable<T>> void bubbleSort(List<T> list) {
         if (list == null || list.size() <= 1) {
             return;
@@ -40,16 +31,12 @@ public class BubbleSortUtil {
                 }
             }
             
-            // If no elements were swapped, the list is already sorted
             if (!swapped) {
                 break;
             }
         }
     }
     
-    /**
-     * Bubble sort with custom comparator
-     */
     public <T> void bubbleSort(List<T> list, Comparator<T> comparator) {
         if (list == null || list.size() <= 1) {
             return;
@@ -105,9 +92,6 @@ public class BubbleSortUtil {
         bubbleSort(articles, Comparator.comparing(Article::getAuthorId));
     }
     
-    /**
-     * Integer array bubble sort (for demonstration)
-     */
     public void bubbleSortArray(int[] array) {
         if (array == null || array.length <= 1) {
             return;
@@ -135,4 +119,3 @@ public class BubbleSortUtil {
         }
     }
 }
-

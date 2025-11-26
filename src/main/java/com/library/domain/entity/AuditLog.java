@@ -42,7 +42,7 @@ public class AuditLog {
     private String description;
     
     @Column(name = "resource_type")
-    private String resourceType; // e.g., "User", "Article"
+    private String resourceType;
     
     @Column(name = "resource_id")
     private Long resourceId;
@@ -72,4 +72,3 @@ public class AuditLog {
     @Column(nullable = false, updatable = false)
     private LocalDateTime timestamp;
 }
-

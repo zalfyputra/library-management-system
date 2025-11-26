@@ -29,4 +29,3 @@ public interface AuditLogRepository extends JpaRepository<AuditLog, Long> {
     @Query("SELECT al FROM AuditLog al ORDER BY al.timestamp DESC")
     Page<AuditLog> findAllOrderByTimestampDesc(Pageable pageable);
 }
-

@@ -2,10 +2,14 @@ spring:
   application:
     name: security-backend
     
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    
   datasource:
-    url: jdbc:postgresql://localhost:5432/library_db
-    username: postgres
-    password: postgres
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/library_db}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
     
   jpa:
@@ -17,10 +21,11 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
         
-  redis:
-    host: localhost
-    port: 6379
-    timeout: 60000
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: ${SPRING_REDIS_PORT:6379}
+      timeout: 60000ms
     
   cache:
     type: redis
@@ -69,4 +74,3 @@ server:
   error:
     include-message: always
     include-binding-errors: always
-

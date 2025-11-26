@@ -1,5 +1,8 @@
 package com.library.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +22,19 @@ import java.time.Duration;
 public class RedisConfig {
     
     @Bean
+    public ObjectMapper redisObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        return mapper;
+    }
+    
+    @Bean
+    public GenericJackson2JsonRedisSerializer redisSerializer() {
+        return new GenericJackson2JsonRedisSerializer(redisObjectMapper());
+    }
+    
+    @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
@@ -27,9 +43,9 @@ public class RedisConfig {
         template.setKeySerializer(new StringRedisSerializer());
         template.setHashKeySerializer(new StringRedisSerializer());
         
-        // Use JSON serialization for values
-        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
-        template.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
+        // Use JSON serialization for values with Java 8 date/time support
+        template.setValueSerializer(redisSerializer());
+        template.setHashValueSerializer(redisSerializer());
         
         template.afterPropertiesSet();
         return template;
@@ -43,7 +59,7 @@ public class RedisConfig {
                     RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer())
                 )
                 .serializeValuesWith(
-                    RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer())
+                    RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer())
                 )
                 .disableCachingNullValues();
         
@@ -52,4 +68,3 @@ public class RedisConfig {
                 .build();
     }
 }
-

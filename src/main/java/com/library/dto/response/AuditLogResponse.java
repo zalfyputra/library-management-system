@@ -28,4 +28,3 @@ public class AuditLogResponse {
     private String details;
     private LocalDateTime timestamp;
 }
-

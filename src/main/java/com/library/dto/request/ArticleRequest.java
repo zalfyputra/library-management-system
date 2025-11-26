@@ -24,4 +24,3 @@ public class ArticleRequest {
     @Builder.Default
     private Boolean isPublic = true;
 }
-

@@ -251,4 +251,3 @@ class AuthServiceTest {
         assertThrows(ResourceNotFoundException.class, () -> authService.login(request));
     }
 }
-

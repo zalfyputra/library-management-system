@@ -30,4 +30,3 @@ public class UserUpdateRequest {
     
     private Boolean enabled;
 }
-

@@ -20,4 +20,3 @@ public class VerifyOtpRequest {
     @NotBlank(message = "Username or email is required")
     private String usernameOrEmail;
 }
-

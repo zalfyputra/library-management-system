@@ -221,4 +221,3 @@ class ArticleServiceTest {
         verify(bubbleSortUtil, times(1)).sortArticlesByUpdatedDate(any());
     }
 }
-

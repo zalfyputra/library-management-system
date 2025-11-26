@@ -21,4 +21,3 @@ public class ArticleResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
-
