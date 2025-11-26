@@ -36,7 +36,6 @@ build/
 .env
 .env.local
 .env.*.local
-env.example
 
 ### Logs ###
 *.log
@@ -47,4 +46,3 @@ Thumbs.db
 
 ### Project Specific ###
 backend-project.pdf
-
