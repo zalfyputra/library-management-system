@@ -110,12 +110,12 @@ Tracks all user activities with:
 - PostgreSQL 16 (if running locally)
 - Redis 7 (if running locally)
 
-### Option 1: Docker Compose (Recommended)
+### Step-by-Step
 
 1. **Clone the repository**
 ```bash
-git clone <repository-url>
-cd security-backend
+git clone https://github.com/zalfyputra/library-management-system.git
+cd library-management-system-main
 ```
 
 2. **Configure environment variables**
@@ -134,35 +134,6 @@ docker-compose up -d
 - Swagger UI: http://localhost:8080/swagger-ui.html
 - API Docs: http://localhost:8080/api-docs
 
-### Option 2: Local Development
-
-1. **Start PostgreSQL**
-```bash
-docker run -d --name postgres -p 5432:5432 \
-  -e POSTGRES_DB=library_db \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_PASSWORD=postgres \
-  postgres:16-alpine
-```
-
-2. **Start Redis**
-```bash
-docker run -d --name redis -p 6379:6379 redis:7-alpine
-```
-
-3. **Configure application**
-Edit `src/main/resources/application.yml`:
-- Database connection
-- Redis connection
-- JWT secret
-- Email credentials (for OTP)
-
-4. **Build and run**
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-
 ## 📝 API Documentation
 
 ### Authentication Endpoints
@@ -173,9 +144,9 @@ POST /api/auth/register
 Content-Type: application/json
 
 {
-  "fullname": "John Doe",
-  "username": "johndoe",
-  "email": "john@example.com",
+  "fullname": "Zalfy Putra",
+  "username": "zalfyputra",
+  "email": "zalfyputra@email.com",
   "password": "securePassword123"
 }
 ```
@@ -189,8 +160,8 @@ Content-Type: application/json
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
     "type": "Bearer",
     "userId": 1,
-    "username": "johndoe",
-    "email": "john@example.com",
+    "username": "zalfyputra",
+    "email": "zalfyputra@email.com",
     "role": "VIEWER"
   }
 }
@@ -202,7 +173,7 @@ POST /api/auth/login
 Content-Type: application/json
 
 {
-  "usernameOrEmail": "johndoe",
+  "usernameOrEmail": "zalfyputra",
   "password": "securePassword123"
 }
 ```
@@ -215,7 +186,7 @@ Content-Type: application/json
   "data": {
     "mfaRequired": true,
     "userId": 1,
-    "username": "johndoe",
+    "username": "zalfyputra",
     "message": "OTP has been sent to your email. Please verify to complete login."
   }
 }
@@ -227,7 +198,7 @@ POST /api/auth/verify-otp
 Content-Type: application/json
 
 {
-  "usernameOrEmail": "johndoe",
+  "usernameOrEmail": "zalfyputra",
   "otpCode": "123456"
 }
 ```
@@ -241,8 +212,8 @@ Content-Type: application/json
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
     "type": "Bearer",
     "userId": 1,
-    "username": "johndoe",
-    "email": "john@example.com",
+    "username": "zalfyputra",
+    "email": "zalfyputra@email.com",
     "role": "VIEWER"
   }
 }
@@ -449,44 +420,3 @@ docker-compose down
 ```bash
 docker-compose logs -f app
 ```
-
-## 🔐 Security Best Practices
-
-1. **Change JWT Secret:** Use a strong, random secret in production
-2. **Email Configuration:** Use app-specific passwords for Gmail
-3. **Environment Variables:** Never commit `.env` file
-4. **HTTPS:** Always use HTTPS in production
-5. **Database:** Use strong passwords and secure connections
-6. **Rate Limiting:** Adjust based on your traffic patterns
-
-## 📈 Performance Optimizations
-
-- **Redis Caching:** Articles are cached for 10 minutes
-- **Database Indexing:** Optimized queries with proper indexes
-- **Connection Pooling:** Configured for optimal database performance
-- **Lazy Loading:** JPA entities use lazy fetching where appropriate
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👨‍💻 Author
-
-Library Management System Backend
-
-## 📞 Support
-
-For support, email support@library.com or create an issue in the repository.
-
----
-
-**Built with ❤️ using Spring Boot**
-
